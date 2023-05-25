@@ -1,7 +1,6 @@
 package com.example.springsecuritytask.controller;
 
 import com.example.springsecuritytask.entities.User;
-import com.example.springsecuritytask.repository.RoleRepository;
 import com.example.springsecuritytask.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,20 +16,13 @@ public class AdminController {
 
     private UserService userService;
 
-    private RoleRepository roleRepository;
-
     @Autowired
     public void setUserService(UserService userService) {
         this.userService = userService;
     }
 
-    @Autowired
-    public void setRoleRepository(RoleRepository roleRepository) {
-        this.roleRepository = roleRepository;
-    }
-
     @GetMapping()
-    public String modelMainPage(Model model, Principal principal) {
+    public String showAdminPage(Model model, Principal principal) {
         model.addAttribute("usersList", userService.findAllUsers());
         model.addAttribute("roles", userService.findAllRoles());
         model.addAttribute("user", userService.findUserByEmail(principal.getName()));

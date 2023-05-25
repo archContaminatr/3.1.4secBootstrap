@@ -3,7 +3,6 @@ package com.example.springsecuritytask.service;
 import com.example.springsecuritytask.entities.Role;
 import com.example.springsecuritytask.entities.User;
 
-import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
 
 public interface UserService {
@@ -14,8 +13,6 @@ public interface UserService {
     List<User> findAllUsers();
 
     List<Role> findAllRoles();
-
-    User getUserById(Long id);
 
     User findUserByEmail(String email);
 
